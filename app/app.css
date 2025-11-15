@@ -1,15 +1,96 @@
+/**
+ * Archivo principal de CSS donde configuramos Tailwind v4.
+ * En v4 usamos @import "tailwindcss" directamente.
+ */
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
+/**
+ * Definimos las variables CSS personalizadas para los colores de la marca.
+ */
+@layer base {
+  :root {
+    /* Fuentes personalizadas */
+    --font-sans: "Inter", ui-sans-serif, system-ui;
+    --font-pacifico: "Pacifico", cursive;
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+    /* Colores personalizados de la marca "Mil Sabores" */
+    --color-crema: #fff5e1;
+    --color-rosa: #ffc0cb;
+    --color-chocolate: #8b4513;
+    --color-chocolate-hover: #6b3410;
+    --color-chocolate-dark: #4a240b;
+    --color-marron: #5d4037;
+    --color-dorado: #ffd700;
+    --color-menta: #98e4d6;
+    --color-salmon: #ffa07a;
+  }
+
+  /**
+   * Estilos base aplicados a la etiqueta <html> y <body>.
+   */
+  html,
+  body {
+    background-color: var(--color-crema);
+    color: var(--color-marron);
+    font-family: var(--font-sans);
+  }
 
   @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+    html {
+      color-scheme: dark;
+    }
+  }
+}
+
+/**
+ * Utilidades personalizadas usando las variables CSS
+ */
+@layer utilities {
+  .bg-crema {
+    background-color: var(--color-crema);
+  }
+  .bg-rosa {
+    background-color: var(--color-rosa);
+  }
+  .bg-chocolate {
+    background-color: var(--color-chocolate);
+  }
+  .bg-chocolate-hover {
+    background-color: var(--color-chocolate-hover);
+  }
+  .bg-chocolate-dark {
+    background-color: var(--color-chocolate-dark);
+  }
+  .bg-marron {
+    background-color: var(--color-marron);
+  }
+  .bg-dorado {
+    background-color: var(--color-dorado);
+  }
+  .bg-menta {
+    background-color: var(--color-menta);
+  }
+  .bg-salmon {
+    background-color: var(--color-salmon);
+  }
+  
+  .text-crema {
+    color: var(--color-crema);
+  }
+  .text-rosa {
+    color: var(--color-rosa);
+  }
+  .text-chocolate {
+    color: var(--color-chocolate);
+  }
+  .text-marron {
+    color: var(--color-marron);
+  }
+  .text-dorado {
+    color: var(--color-dorado);
+  }
+  
+  .font-pacifico {
+    font-family: var(--font-pacifico);
   }
 }
