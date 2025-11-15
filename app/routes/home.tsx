@@ -22,14 +22,14 @@ export function meta({}: Route.MetaArgs) {
 }
 
 /**
- * Componente de Página: Home
+ * Componente de Página: home
  *
  * Esta es la página de inicio que muestra:
  * - Sección hero con información de 50 años
  * - Productos destacados
  * - Información de la empresa (misión, visión, historia)
  */
-export default function Home() {
+export default function home() {
     // Filtramos solo los productos destacados
     const productosDestacados = PRODUCTOS.filter(p => p.destacado);
 

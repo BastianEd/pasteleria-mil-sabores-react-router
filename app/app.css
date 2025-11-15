@@ -399,9 +399,6 @@
  * UTILIDADES GENERALES
  * ============================================
  */
-.hidden {
-    display: none !important;
-}
 
 .text-center {
     text-align: center;

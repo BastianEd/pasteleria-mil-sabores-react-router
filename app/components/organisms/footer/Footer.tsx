@@ -52,14 +52,6 @@ export const Footer = () => {
                             >
                                 <i className="fab fa-instagram"></i>
                             </a>
-                            <a
-                                href="#"
-                                className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-dorado hover:text-chocolate transition-all hover:-translate-y-1"
-                                title="Twitter/X"
-                                aria-label="Síguenos en Twitter"
-                            >
-                                <i className="fab fa-x-twitter"></i>
-                            </a>
                         </div>
                     </div>
 

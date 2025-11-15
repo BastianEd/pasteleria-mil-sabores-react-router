@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 /**
  * Componente Átomo: Logo
  *
- * Renderiza el logo y el eslogan, funcionando como un enlace a la Home.
+ * Renderiza el logo y el eslogan, funcionando como un enlace a la home.
  * Reemplaza la estructura .nav-brand del CSS original.
  */
 export const Logo = () => {
