@@ -4,9 +4,9 @@ import {
     Outlet,
     Scripts,
     ScrollRestoration,
-} from "react-router";
+} from "react-router-dom"; // <--- CORREGIDO
 
-import type { LinksFunction } from "react-router";
+import type { LinksFunction } from "react-router-dom"; // <--- CORREGIDO
 import appStyles from "./app.css?url";
 import { Header } from "./components/organisms/header/Header";
 import { Footer } from "./components/organisms/footer/Footer";
