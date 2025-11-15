@@ -103,7 +103,7 @@ export default function Home() {
                         <div className="flex justify-center items-center">
                             <div className="relative">
                                 <img
-                                    src="public/assets/img/Logo50Aniversario.png"
+                                    src="/assets/img/Logo50Aniversario.png"
                                     alt="50 Años Pastelería Mil Sabores"
                                     className="w-full max-w-md lg:max-w-lg rounded-3xl shadow-fuerte"
                                 />
