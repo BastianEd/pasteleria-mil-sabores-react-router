@@ -48,14 +48,15 @@ export const links: Route.LinksFunction = () => [
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        {/*
+    <head>
+        <meta charSet="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <Meta/>
+        <Links/>
+        <link rel="shortcut icon" href="https://i.ibb.co/p6Wd9mp4/Icon.png"/>
+    </head>
+    <body>
+    {/*
          * AuthProvider maneja el estado del usuario (quién está logueado).
          * CartProvider maneja el estado del carrito.
          * Envolvemos MainLayout con ellos para que todos los componentes hijos

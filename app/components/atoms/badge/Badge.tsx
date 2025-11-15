@@ -1,6 +1,9 @@
 import type { BlogPost } from "~/types";
 import { Button } from "../../atoms/button/Button";
 
+
+
+
 interface BlogCardProps {
   post: BlogPost;
 }

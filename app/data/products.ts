@@ -13,7 +13,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Tortas Cuadradas",
         precio: 45000,
         descripcion: "Deliciosa torta de chocolate con capas de ganache y un toque de avellanas.",
-        imagen: "/img/TortaCuadradaDeChocolate.webp",
+        imagen: ".../../public/assets/img/TortaCuadradaDeChocolate.webp",
         destacado: true
     },
     {
@@ -22,7 +22,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Tortas Cuadradas",
         precio: 50000,
         descripcion: "Una mezcla de frutas frescas y crema chantilly sobre un suave bizcocho de vainilla.",
-        imagen: "/img/TortaCuadradaDeFrutas.jpg"
+        imagen: "../../public/assets/img/TortaCuadradaDeFrutas.jpg"
     },
     {
         codigo: "TT001",
@@ -30,7 +30,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Tortas Circulares",
         precio: 40000,
         descripcion: "Bizcocho de vainilla clásico relleno con crema pastelera y cubierto con un glaseado dulce.",
-        imagen: "/img/TortaCircularDeVainilla.png",
+        imagen: "../../public/assets/img/TortaCircularDeVainilla.png",
         destacado: true
     },
     {
@@ -39,7 +39,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Tortas Circulares",
         precio: 42000,
         descripcion: "Torta tradicional chilena con manjar y nueces, un deleite para los amantes de los sabores dulces.",
-        imagen: "/img/TortaCircularDeManjar.png"
+        imagen: "../../public/assets/img/TortaCircularDeManjar.png"
     },
     {
         codigo: "PI001",
@@ -47,7 +47,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Postres Individuales",
         precio: 5000,
         descripcion: "Postre individual cremoso y suave, hecho con chocolate de alta calidad.",
-        imagen: "/img/MousseDeChocolate.jpg",
+        imagen: "../../public/assets/img/MousseDeChocolate.jpg",
         destacado: true
     },
     {
@@ -56,7 +56,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Postres Individuales",
         precio: 5500,
         descripcion: "Un postre italiano individual con capas de café, mascarpone y cacao.",
-        imagen: "/img/TiramisuClasico.webp"
+        imagen: "../../public/assets/img/TiramisuClasico.webp"
     },
     {
         codigo: "PSA001",
@@ -64,7 +64,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Productos Sin Azúcar",
         precio: 48000,
         descripcion: "Torta ligera y deliciosa, endulzada naturalmente, ideal para quienes buscan opciones saludables.",
-        imagen: "/img/TortaSinAzucarDeNaranja.jpg"
+        imagen: "../../public/assets/img/TortaSinAzucarDeNaranja.jpg"
     },
     {
         codigo: "PSA002",
@@ -72,7 +72,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Productos Sin Azúcar",
         precio: 47000,
         descripcion: "Suave y cremoso, este cheesecake es una opción perfecta para disfrutar sin culpa.",
-        imagen: "/img/CheesecakeSinAzucar.jpg"
+        imagen: "../../public/assets/img/CheesecakeSinAzucar.jpg"
     },
     {
         codigo: "PT001",
@@ -80,7 +80,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Pastelería Tradicional",
         precio: 3000,
         descripcion: "Pastelería tradicional rellena de manzanas especiadas, perfecta para un dulce desayuno o merienda.",
-        imagen: "/img/EmpanadaDeManzana.jpg"
+        imagen: "../../public/assets/img/EmpanadaDeManzana.jpg"
     },
     {
         codigo: "PT002",
@@ -88,7 +88,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Pastelería Tradicional",
         precio: 6000,
         descripcion: "Tradicional tarta española hecha con almendras, azúcar, y huevos.",
-        imagen: "/img/TartaDeSantiago.webp"
+        imagen: "../../public/assets/img/TartaDeSantiago.webp"
     },
     {
         codigo: "PG001",
@@ -96,7 +96,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Productos Sin Gluten",
         precio: 4000,
         descripcion: "Rico y denso, este brownie es perfecto para quienes necesitan evitar el gluten sin sacrificar el sabor.",
-        imagen: "/img/BrownieSinGluten.jpeg"
+        imagen: "../../public/assets/img/BrownieSinGluten.jpeg"
     },
     {
         codigo: "PG002",
@@ -104,7 +104,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Productos Sin Gluten",
         precio: 3500,
         descripcion: "Suave y esponjoso, ideal para sándwiches o para acompañar cualquier comida.",
-        imagen: "/img/PanSinGluten.webp"
+        imagen: "../../public/assets/img/PanSinGluten.webp"
     },
     {
         codigo: "PV001",
@@ -112,7 +112,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Productos Vegana",
         precio: 50000,
         descripcion: "Torta de chocolate húmeda y deliciosa, hecha sin productos de origen animal.",
-        imagen: "/img/TortaVeganaDeChocolate.png"
+        imagen: "../../public/assets/img/TortaVeganaDeChocolate.png"
     },
     {
         codigo: "PV002",
@@ -120,7 +120,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Productos Vegana",
         precio: 4500,
         descripcion: "Crujientes y sabrosas, estas galletas son una excelente opción para un snack saludable y vegano.",
-        imagen: "/img/GalletasVeganasDeAvena.jpg"
+        imagen: "../../public/assets/img/GalletasVeganasDeAvena.jpg"
     },
     {
         codigo: "TE001",
@@ -128,7 +128,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Tortas Especiales",
         precio: 55000,
         descripcion: "Diseñada especialmente para celebraciones, personalizable con decoraciones y mensajes únicos.",
-        imagen: "/img/TortaEspecialDeCumpleaños.jpg",
+        imagen: "../../public/assets/img/TortaEspecialDeCumpleaños.jpg",
         destacado: true
     },
     {
@@ -137,7 +137,7 @@ export const PRODUCTOS: Product[] = [
         categoria: "Tortas Especiales",
         precio: 60000,
         descripcion: "Elegante y deliciosa, esta torta está diseñada para ser el centro de atención en cualquier boda.",
-        imagen: "/img/TortaEspecialDeBoda.webp"
+        imagen: "../../public/assets/img/TortaEspecialDeBoda.webp"
     }
 ];
 
