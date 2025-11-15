@@ -1,36 +1,39 @@
-import * as React from "react";
-import { Footer } from "../organisms/footer/Footer";
+import { Outlet } from "react-router";
 import { Header } from "../organisms/header/Header";
-
-interface MainLayoutProps {
-  children: React.ReactNode;
-}
+import { Footer } from "../organisms/footer/Footer";
+import { AuthProvider } from "~/context/AuthContext";
+import { CartProvider } from "~/context/CartContext";
 
 /**
- * Componente Plantilla: MainLayout
+ * Componente Layout Principal
  *
- * Define la estructura visual principal de la aplicación.
- * Incluye el Header, un 'main' para el contenido de la página, y el Footer.
- * 'children' será el componente de la ruta activa (ej: home.tsx, products.tsx).
+ * Estructura base de la aplicación que envuelve todas las páginas.
+ * Incluye:
+ * - Providers globales (Auth y Cart)
+ * - Header
+ * - Contenido principal (Outlet)
+ * - Footer
  */
-export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* 1. Cabecera Fija */}
-      <Header />
+export const MainLayout = () => {
+    return (
+        <AuthProvider>
+            <CartProvider>
+                <div className="min-h-screen flex flex-col bg-crema">
+                    {/* Header fijo en la parte superior */}
+                    <Header />
 
-      {/* 2. Contenido Principal (variable) */}
-      <main className="flex-grow">
-        {children}
-      </main>
+                    {/*
+            Contenido principal
+            El Outlet renderiza el contenido de las rutas hijas
+          */}
+                    <main className="flex-1">
+                        <Outlet />
+                    </main>
 
-      {/* 3. Pie de Página */}
-      <Footer />
-      
-      {/* Aquí podríamos un componente global de Notificaciones 
-        (reemplazo de 'notification' de utils.js)
-      */}
-      {/* <NotificationSystem /> */}
-    </div>
-  );
+                    {/* Footer en la parte inferior */}
+                    <Footer />
+                </div>
+            </CartProvider>
+        </AuthProvider>
+    );
 };

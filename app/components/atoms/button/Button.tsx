@@ -1,57 +1,84 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
+import type { ReactNode } from "react";
 
-// Definimos los props que nuestro botón puede aceptar
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  variant?: 'primary' | 'secondary'; // Estilos: primario o secundario
-  to?: string; // Si se provee 'to', el botón se renderiza como un Link
-  fullWidth?: boolean;
+/**
+ * Tipo de propiedades del componente Button
+ */
+interface ButtonProps {
+    children: ReactNode;
+    to?: string; // Si se proporciona, renderiza un Link
+    onClick?: () => void; // Si se proporciona, renderiza un button
+    variant?: "primary" | "secondary"; // Estilo del botón
+    className?: string; // Clases adicionales
+    fullWidth?: boolean; // Si debe ocupar todo el ancho
+    type?: "button" | "submit" | "reset"; // Tipo de botón (solo para <button>)
+    disabled?: boolean; // Estado deshabilitado
 }
 
 /**
- * Componente Átomo: Botón (Button)
+ * Componente Átomo: Button
  *
- * Un botón reutilizable con estilos predefinidos.
- * Reemplaza las clases .btn-primary y .btn-secondary del CSS original.
- * Si recibe un prop 'to', se comporta como un Link de React Router.
+ * Botón reutilizable que puede ser:
+ * - Un enlace interno (Link de React Router)
+ * - Un botón interactivo (button)
+ *
+ * Variantes:
+ * - primary: Color chocolate (predeterminado)
+ * - secondary: Color rosa
  */
-export const Button: React.FC<ButtonProps> = ({
-  children,
-  variant = 'primary',
-  to,
-  fullWidth = false,
-  className = '',
-  ...props
-}) => {
-  // Clases base de Tailwind para todos los botones
-  const baseClasses = "px-6 py-3 rounded-full font-semibold transition-all duration-300 inline-flex items-center justify-center gap-2";
+export const Button = ({
+                           children,
+                           to,
+                           onClick,
+                           variant = "primary",
+                           className = "",
+                           fullWidth = false,
+                           type = "button",
+                           disabled = false,
+                       }: ButtonProps) => {
+    // Clases base compartidas
+    const baseClasses = `
+    inline-flex items-center justify-center gap-2 
+    px-6 py-3 rounded-full font-semibold 
+    transition-all duration-300 
+    ${fullWidth ? 'w-full' : ''}
+    ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:-translate-y-0.5'}
+  `;
 
-  // Clases específicas para cada variante
-  const variantClasses = {
-    primary: "bg-chocolate text-white hover:bg-chocolate-hover hover:-translate-y-0.5 shadow-md",
-    secondary: "bg-rosa text-marron hover:bg-salmon hover:-translate-y-0.5",
-  };
+    // Clases específicas según la variante
+    const variantClasses = {
+        primary: `
+      bg-chocolate text-white 
+      shadow-suave hover:shadow-media
+      ${!disabled && 'hover:bg-chocolate-hover'}
+    `,
+        secondary: `
+      bg-rosa text-marron 
+      ${!disabled && 'hover:bg-salmon'}
+    `,
+    };
 
-  // Clases para ancho completo
-  const widthClass = fullWidth ? "w-full" : "";
+    // Combinar todas las clases
+    const finalClasses = `${baseClasses} ${variantClasses[variant]} ${className}`.trim();
 
-  // Combinamos todas las clases
-  const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${widthClass} ${className}`;
+    // Si tiene la prop "to", renderizar como Link
+    if (to) {
+        return (
+            <Link to={to} className={finalClasses}>
+                {children}
+            </Link>
+        );
+    }
 
-  // Si el botón tiene un prop 'to', lo renderizamos como un <Link> de React Router
-  if (to) {
+    // Si tiene la prop "onClick", renderizar como button
     return (
-      <Link to={to} className={combinedClasses} {...(props as any)}>
-        {children}
-      </Link>
+        <button
+            type={type}
+            onClick={onClick}
+            className={finalClasses}
+            disabled={disabled}
+        >
+            {children}
+        </button>
     );
-  }
-
-  // Si no, es un botón normal
-  return (
-    <button className={combinedClasses} {...props}>
-      {children}
-    </button>
-  );
 };

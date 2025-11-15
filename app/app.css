@@ -1,14 +1,18 @@
 /**
- * app/app.css
- * Hoja de estilo global con Tailwind v4 y utilidades de marca Mil Sabores.
- * Replica las variables, gradientes, sombras y componentes del sitio original.
+ * Archivo principal de CSS para Pastelería Mil Sabores
+ * Importamos Tailwind v4 y definimos estilos personalizados
  */
 @import "tailwindcss";
 
-/* === VARIABLES Y BASE === */
+/**
+ * ============================================
+ * VARIABLES CSS PERSONALIZADAS
+ * ============================================
+ * Colores basados en el diseño original de Mil Sabores
+ */
 @layer base {
     :root {
-        /* Colores de marca */
+        /* Colores principales del diseño */
         --color-crema-pastel: #FFF5E1;
         --color-rosa-suave: #FFC0CB;
         --color-chocolate: #8B4513;
@@ -20,11 +24,11 @@
         --color-verde-menta: #98E4D6;
         --color-salmon: #FFA07A;
 
-        /* Tipografías */
-        --font-principal: 'Lato', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        /* Fuentes */
+        --font-principal: 'Lato', sans-serif;
         --font-encabezados: 'Pacifico', cursive;
 
-        /* Espaciado */
+        /* Espaciado personalizado */
         --spacing-xs: 4px;
         --spacing-sm: 8px;
         --spacing-md: 16px;
@@ -32,199 +36,389 @@
         --spacing-xl: 32px;
         --spacing-2xl: 48px;
 
-        /* Sombras */
+        /* Sombras personalizadas */
         --shadow-suave: 0 2px 8px rgba(139, 69, 19, 0.1);
         --shadow-media: 0 4px 16px rgba(139, 69, 19, 0.15);
         --shadow-fuerte: 0 8px 24px rgba(139, 69, 19, 0.2);
-
-        /* Transiciones */
-        --transicion-suave: all 0.3s ease;
-        --transicion-rapida: all 0.2s ease;
     }
 
-    html { scroll-behavior: smooth; }
+    /**
+     * Estilos base globales
+     * Aplicados a todos los elementos
+     */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 200ms;
+    }
 
+    /**
+     * Estilos del body y html
+     * Define el fondo color crema y fuente principal
+     */
+    html,
     body {
-        font-family: var(--font-principal);
         background-color: var(--color-crema-pastel);
         color: var(--color-marron-oscuro);
+        font-family: var(--font-principal);
+        scroll-behavior: smooth;
         line-height: 1.6;
         overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, h5, h6 { font-family: var(--font-encabezados); font-weight: 400; }
+    /**
+     * Títulos con fuente Pacifico
+     */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-encabezados);
+        font-weight: normal;
+    }
 
-    img { max-width: 100%; height: auto; }
+    /**
+     * Enlaces sin decoración por defecto
+     */
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /**
+     * Imágenes responsivas
+     */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
-/* === COMPONENTES === */
-@layer components {
-    /* Contenedor consistente con el original */
-    .container { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+/**
+ * ============================================
+ * UTILIDADES PERSONALIZADAS
+ * ============================================
+ * Clases reutilizables para colores, fondos, etc.
+ */
+@layer utilities {
+    /* === COLORES DE FONDO === */
+    .bg-crema {
+        background-color: var(--color-crema-pastel);
+    }
+    .bg-rosa {
+        background-color: var(--color-rosa-suave);
+    }
+    .bg-chocolate {
+        background-color: var(--color-chocolate);
+    }
+    .bg-chocolate-hover {
+        background-color: var(--color-chocolate-hover);
+    }
+    .bg-chocolate-dark {
+        background-color: var(--color-chocolate-dark);
+    }
+    .bg-marron {
+        background-color: var(--color-marron-oscuro);
+    }
+    .bg-dorado {
+        background-color: var(--color-dorado);
+    }
+    .bg-menta {
+        background-color: var(--color-verde-menta);
+    }
+    .bg-salmon {
+        background-color: var(--color-salmon);
+    }
 
-    /* Header gradiente y sombra */
-    .header-grad {
-        background: linear-gradient(135deg, var(--color-rosa-suave) 0%, var(--color-crema-pastel) 100%);
+    /* === COLORES DE TEXTO === */
+    .text-crema {
+        color: var(--color-crema-pastel);
+    }
+    .text-rosa {
+        color: var(--color-rosa-suave);
+    }
+    .text-chocolate {
+        color: var(--color-chocolate);
+    }
+    .text-marron {
+        color: var(--color-marron-oscuro);
+    }
+    .text-dorado {
+        color: var(--color-dorado);
+    }
+    .text-gris {
+        color: var(--color-gris-claro);
+    }
+
+    /* === FUENTES === */
+    .font-pacifico {
+        font-family: var(--font-encabezados);
+    }
+    .font-lato {
+        font-family: var(--font-principal);
+    }
+
+    /* === SOMBRAS === */
+    .shadow-suave {
+        box-shadow: var(--shadow-suave);
+    }
+    .shadow-media {
         box-shadow: var(--shadow-media);
     }
+    .shadow-fuerte {
+        box-shadow: var(--shadow-fuerte);
+    }
 
-    /* Hero con gradiente */
-    .hero-section {
+    /* === GRADIENTES === */
+    .gradient-hero {
         background: linear-gradient(135deg, var(--color-rosa-suave) 0%, var(--color-crema-pastel) 100%);
-        padding: var(--spacing-2xl) 0;
+    }
+    .gradient-footer {
+        background: linear-gradient(135deg, var(--color-chocolate) 0%, var(--color-chocolate-dark) 100%);
+    }
+    .gradient-info {
+        background: linear-gradient(135deg, var(--color-verde-menta) 0%, var(--color-salmon) 100%);
     }
 
-    .hero-title {
-        font-family: var(--font-encabezados);
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        color: var(--color-chocolate);
-        line-height: 1.2;
-    }
-
-    .hero-subtitle {
-        font-size: clamp(1rem, 2.5vw, 1.25rem);
-        color: var(--color-marron-oscuro);
-        font-style: italic;
-    }
-
-    /* Badge aniversario como en el sitio estático */
-    .anniversary-badge {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-image: url("/img/Logo50Aniversario.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 20%;
-        width: min(500px, 90vw);
-        height: min(500px, 90vw);
-        box-shadow: var(--shadow-media);
-    }
-    .anniversary-number {
-        font-family: var(--font-encabezados);
-        font-size: clamp(2rem, 6vw, 4rem);
-        color: var(--color-chocolate);
-        line-height: .8;
-    }
-    .anniversary-text {
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
-        color: var(--color-marron-oscuro);
-        font-weight: 700;
-    }
-
-    /* Tarjetas de feature con glassmorphism */
-    .feature-card {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-md);
-        background: rgba(255, 255, 255, 0.6);
+    /* === EFECTOS GLASSMORPHISM === */
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.3);
         backdrop-filter: blur(10px);
-        padding: var(--spacing-md);
-        border-radius: 15px;
-        transition: var(--transicion-suave);
-        box-shadow: var(--shadow-suave);
+        -webkit-backdrop-filter: blur(10px);
     }
-    .feature-card i { font-size: 1.5rem; color: var(--color-dorado); width: 32px; text-align: center; }
-    .feature-card:hover { transform: translateX(4px); box-shadow: var(--shadow-media); }
 
-    /* Botón principal chocolate */
-    .btn-chocolate {
+    /* === SCROLLBAR PERSONALIZADA === */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--color-crema-pastel);
+    }
+    ::-webkit-scrollbar-thumb {
         background: var(--color-chocolate);
-        color: #fff;
-        padding: var(--spacing-md) var(--spacing-xl);
-        border-radius: 9999px;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        box-shadow: var(--shadow-suave);
-        transition: var(--transicion-suave);
+        border-radius: 6px;
     }
-    .btn-chocolate:hover { background: var(--color-chocolate-hover); transform: translateY(-2px); box-shadow: var(--shadow-media); }
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-chocolate-hover);
+    }
+}
 
-    /* Tarjetas de producto */
-    .product-card {
-        background: #fff;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: var(--shadow-suave);
-        transition: var(--transicion-suave);
-        position: relative;
-    }
-    .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-fuerte); }
-    .product-card:nth-child(odd) { background: linear-gradient(135deg, #fff 0%, var(--color-crema-pastel) 100%); }
-    .product-image {
-        height: 200px;
-        background: var(--color-rosa-suave);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-    }
-    .product-category {
-        position: absolute;
-        top: var(--spacing-sm);
-        right: var(--spacing-sm);
-        background: var(--color-dorado);
-        color: var(--color-chocolate);
-        padding: var(--spacing-xs) var(--spacing-sm);
-        border-radius: 15px;
-        font-size: .8rem;
-        font-weight: 700;
+/**
+ * ============================================
+ * COMPONENTES PERSONALIZADOS
+ * ============================================
+ * Estilos reutilizables para componentes comunes
+ */
+@layer components {
+    /* === CONTENEDOR PRINCIPAL === */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
     }
 
-    /* Info-cards sección empresa */
-    .info-card {
-        background: #fff;
-        padding: var(--spacing-xl);
-        border-radius: 20px;
+    /* === BOTONES === */
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full font-semibold transition-all duration-300;
+        background-color: var(--color-chocolate);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--color-chocolate-hover);
+        transform: translateY(-2px);
         box-shadow: var(--shadow-media);
-        text-align: center;
-        transition: var(--transicion-suave);
     }
-    .info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-fuerte); }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full font-semibold transition-all duration-300;
+        background-color: var(--color-rosa-suave);
+        color: var(--color-marron-oscuro);
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--color-salmon);
+        transform: translateY(-2px);
+    }
+
+    /* === TARJETAS === */
+    .product-card {
+        @apply bg-white rounded-3xl overflow-hidden transition-all duration-300;
+        box-shadow: var(--shadow-suave);
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-fuerte);
+    }
+
+    /* === FEATURE BOXES === */
+    .feature-box {
+        @apply flex items-center gap-3 p-4 rounded-2xl transition-all duration-200;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    .feature-box:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* === INPUTS Y FORMULARIOS === */
+    .form-input {
+        @apply w-full px-4 py-3 rounded-xl transition-all duration-200;
+        background-color: var(--color-crema-pastel);
+        border: 2px solid var(--color-rosa-suave);
+        color: var(--color-marron-oscuro);
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--color-chocolate);
+        box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+    }
+
+    /* === ENLACES DE NAVEGACIÓN === */
+    .nav-link {
+        @apply px-4 py-2 rounded-full font-medium transition-all duration-300;
+        color: #5D4037; /* color-marron-oscuro */
+    }
+
+    .nav-link:hover {
+        background-color: #8B4513; /* color-chocolate */
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .nav-link-active {
+        background-color: #8B4513; /* color-chocolate */
+        color: white;
+        box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+    }
+    /* === TÍTULOS DE SECCIÓN === */
+    .section-title {
+        @apply text-4xl text-center mb-12;
+        font-family: var(--font-encabezados);
+        color: var(--color-chocolate);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* === TARJETAS INFO === */
+    .info-card {
+        @apply p-8 rounded-3xl text-center transition-all duration-300;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-media);
+    }
+
+    .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-fuerte);
+    }
+}
+
+/**
+ * ============================================
+ * ANIMACIONES
+ * ============================================
+ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease infinite;
+}
+
+/**
+ * ============================================
+ * RESPONSIVE DESIGN
+ * ============================================
+ */
+@media (max-width: 768px) {
+    .container {
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+    }
 
     .section-title {
-        font-family: var(--font-encabezados);
-        font-size: clamp(1.8rem, 4vw, 2.8rem);
-        text-align: center;
-        margin-bottom: var(--spacing-xl);
-        color: var(--color-chocolate);
-        text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+        @apply text-3xl mb-8;
     }
 
-    /* Footer degradado chocolate */
-    .footer-grad {
-        background: linear-gradient(135deg, var(--color-chocolate) 0%, var(--color-chocolate-dark) 100%);
-        color: #fff;
+    .feature-box {
+        @apply p-3 text-sm;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        @apply px-6 py-2 text-sm;
     }
 }
 
-/* === UTILIDADES === */
-@layer utilities {
-    .text-chocolate { color: var(--color-chocolate); }
-    .text-marron { color: var(--color-marron-oscuro); }
-    .bg-gradient-hero { background: linear-gradient(135deg, var(--color-rosa-suave) 0%, var(--color-crema-pastel) 100%); }
-    .bg-gradient-info { background: linear-gradient(135deg, var(--color-verde-menta) 0%, var(--color-salmon) 100%); }
-    .shadow-sweet { box-shadow: var(--shadow-suave); }
-    .shadow-sweet-md { box-shadow: var(--shadow-media); }
-    .shadow-sweet-lg { box-shadow: var(--shadow-fuerte); }
-
-    /* Puntos dorados sutiles de fondo de Hero (detalle decorativo) */
-    .hero-dots::before {
-        content: '';
-        position: absolute; inset: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23FFD700" opacity="0.1"/></svg>');
-        background-size: 50px 50px;
-        pointer-events: none;
-        opacity: .3;
+@media (max-width: 480px) {
+    .section-title {
+        @apply text-2xl mb-6;
     }
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
-    .container { @apply px-4; }
-    .anniversary-badge { width: 300px; height: 300px; }
+/**
+ * ============================================
+ * UTILIDADES GENERALES
+ * ============================================
+ */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Estilos para accesibilidad */
+:focus-visible {
+    outline: 3px solid var(--color-dorado);
+    outline-offset: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }

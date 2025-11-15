@@ -1,80 +1,114 @@
-import type { Product } from "~/types";
-import { formatearPrecio } from "~/lib/utils";
+import { Link } from "react-router";
 import { useCart } from "~/hooks/useCart";
-import { Button } from "../../atoms/button/Button";
+import type { Product } from "~/types";
 
+/**
+ * Props del componente ProductCard
+ */
 interface ProductCardProps {
-  product: Product;
+    product: Product;
 }
 
 /**
  * Componente Molécula: ProductCard
  *
- * Muestra un producto en formato de tarjeta.
- * Reemplaza la función 'crearTarjetaProducto' de productos.js.
- * Usa el hook 'useCart' para añadir productos al carrito.
+ * Tarjeta de producto que muestra:
+ * - Imagen del producto
+ * - Categoría
+ * - Nombre
+ * - Descripción
+ * - Precio
+ * - Botón para agregar al carrito
+ * - Botón para ver detalles
  */
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addItem } = useCart();
+export const ProductCard = ({ product }: ProductCardProps) => {
+    const { addItem } = useCart();
 
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault(); // Evita la navegación si se hace clic en el botón
-    addItem(product);
-    // Aquí podrías añadir una notificación
-    alert(`${product.nombre} agregado al carrito!`);
-  };
+    /**
+     * Función para agregar el producto al carrito
+     */
+    const handleAddToCart = () => {
+        addItem(product);
+    };
 
-  return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-      <div className="relative">
-        {/*
-         * Usamos un aspect-ratio de 4/3 para que todas las imágenes
-         * tengan un tamaño consistente. 'object-cover' asegura que la imagen
-         * llene el espacio sin distorsionarse.
-        */}
-        <img
-          src={product.imagen}
-          alt={product.nombre}
-          className="w-full h-48 object-cover"
-          // Manejo de error básico: si la imagen no carga, no se muestra
-          onError={(e) => (e.currentTarget.style.display = 'none')}
-        />
-        {/* Fallback en caso de error (no implementado aquí, pero se podría) */}
-        
-        {/* Categoría */}
-        <span className="absolute top-2 right-2 bg-dorado text-chocolate text-xs font-bold px-3 py-1 rounded-full">
+    /**
+     * Función para formatear el precio en formato chileno
+     */
+    const formatPrice = (price: number) => {
+        return new Intl.NumberFormat('es-CL', {
+            style: 'currency',
+            currency: 'CLP',
+            minimumFractionDigits: 0,
+        }).format(price);
+    };
+
+    return (
+        <article className="product-card">
+            {/*
+        ============================================
+        IMAGEN DEL PRODUCTO
+        ============================================
+      */}
+            <div className="relative h-48 bg-rosa flex items-center justify-center overflow-hidden">
+                <img
+                    src={product.imagen}
+                    alt={product.nombre}
+                    className="w-full h-full object-cover"
+                />
+
+                {/* Badge de categoría */}
+                <span className="absolute top-2 right-2 bg-dorado text-chocolate px-3 py-1 rounded-full text-xs font-bold">
           {product.categoria}
         </span>
-      </div>
+            </div>
 
-      <div className="p-5">
-        <h4 className="font-pacifico text-2xl text-chocolate truncate" title={product.nombre}>
-          {product.nombre}
-        </h4>
-        <p className="text-gray-600 text-sm h-10 my-2 overflow-hidden">
-          {product.descripcion}
-        </p>
-        <div className="text-2xl font-bold text-chocolate my-3">
-          {formatearPrecio(product.precio)}
-        </div>
-        <div className="flex flex-col sm:flex-row gap-2">
-          <Button
-            onClick={handleAddToCart}
-            className="flex-1"
-          >
-            <i className="fas fa-shopping-cart"></i>
-            <span>Agregar</span>
-          </Button>
-          {/*
-           * Podríamos añadir un botón de "Ver más" que lleve
-           * a una página de detalle del producto, ej: /products/TC001
-           * Por ahora, no está implementado en las rutas.
-          */}
-          {/* <Button variant="secondary" className="flex-1">
-            <i className="fas fa-eye"></i>
-          </Button> */}
-        </div>
-      </div>
-    </div>
-  );
+            {/*
+        ============================================
+        INFORMACIÓN DEL PRODUCTO
+        ============================================
+      */}
+            <div className="p-6 space-y-3">
+                {/* Nombre del producto */}
+                <h4 className="font-pacifico text-xl text-chocolate line-clamp-2">
+                    {product.nombre}
+                </h4>
+
+                {/* Descripción del producto */}
+                <p className="text-sm text-gris line-clamp-2 leading-relaxed">
+                    {product.descripcion}
+                </p>
+
+                {/* Precio del producto */}
+                <p className="text-2xl font-bold text-chocolate">
+                    {formatPrice(product.precio)}
+                </p>
+
+                {/*
+          ============================================
+          ACCIONES DEL PRODUCTO
+          ============================================
+          Botón agregar al carrito + botón ver detalles
+        */}
+                <div className="flex gap-2 pt-2">
+                    {/* Botón: Agregar al carrito */}
+                    <button
+                        onClick={handleAddToCart}
+                        className="flex-1 bg-chocolate text-white px-4 py-2 rounded-full font-medium hover:bg-chocolate-hover transition-all duration-300 hover:scale-105"
+                    >
+                        <i className="fas fa-cart-plus mr-2"></i>
+                        Agregar
+                    </button>
+
+                    {/* Botón: Ver detalles */}
+                    <Link
+                        to={`/products/${product.codigo}`}
+                        className="bg-rosa text-marron w-10 h-10 rounded-full flex items-center justify-center hover:bg-salmon transition-all duration-300 hover:scale-105"
+                        title="Ver detalles"
+                    >
+                        <i className="fas fa-eye"></i>
+                    </Link>
+                </div>
+            </div>
+        </article>
+    );
 };
